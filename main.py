@@ -114,12 +114,10 @@ def delete_task(id):
 def get_users():
     url = base_url + "users"
 
-    #HEADERS FORM
     headers = {
         'Authorization': login()
     }
 
-    #REQUESTS
     response = requests.request("GET", url, headers=headers)
     if(response.status_code == 200):
         return print_response(response)
@@ -129,12 +127,10 @@ def get_users():
 def get_user_tasks(user_id):
     url = base_url + f"users/{user_id}/tasks"
 
-    #HEADERS FORM
     headers = {
         'Authorization': login()
     }
 
-    #REQUESTS
     response = requests.request("GET", url, headers=headers)
     
     print_response(response)
@@ -143,12 +139,10 @@ def get_user_tasks(user_id):
 def get_user_task_by_id(user_id, task_id):
     url = base_url + f"users/{user_id}/tasks/{task_id}"
 
-    #HEADERS FORM
     headers = {
         'Authorization': login()
     }
 
-    #REQUESTS
     response = requests.request("GET", url, headers=headers)
     if(response.status_code == 200):
         return print_response(response)
@@ -162,7 +156,7 @@ def print_response(response):
     print(response.headers)
 
 if __name__ == '__main__':
-    # create_user()
+    create_user()
     # login()
     # get_task_by_id(31)
     # create_task()
@@ -170,4 +164,4 @@ if __name__ == '__main__':
     # delete_task(151)
     # get_users()
     # get_user_tasks(1)
-    get_user_task_by_id(1, 3)
+    # get_user_task_by_id(1, 3)
