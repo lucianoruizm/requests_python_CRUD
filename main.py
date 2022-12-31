@@ -64,7 +64,7 @@ def create_task():
     url = base_url + "tasks"
 
     data = {
-        "title": "New task"
+        "title": "New Task"
     }
     payload = json.dumps(data) #CONVERT DATA TO JSON
 
@@ -82,8 +82,7 @@ def update_task(id):
     url = base_url + f"tasks/{id}"
 
     data = {
-        # "title": "Task update"
-        "title": "30 task"
+        "title": "Task update"
     }
     payload = json.dumps(data) #CONVERT DATA TO JSON
 
@@ -123,9 +122,11 @@ def get_users():
         return print_response(response)
     raise Exception(403)
 
-# GET USERS TASKS (ADMINISTRATOR)
+# GET USER TASKS (ADMINISTRATOR)
 def get_user_tasks(user_id):
     url = base_url + f"users/{user_id}/tasks"
+    #Filter by is_done:
+    # url = base_url + f"users/{user_id}/tasks?page=2&limit=10&is_done=true" 
 
     headers = {
         'Authorization': login()
@@ -135,7 +136,7 @@ def get_user_tasks(user_id):
     
     print_response(response)
 
-# GET USERS TASKS (ADMINISTRATOR)
+# GET USER TASK (ADMINISTRATOR)
 def get_user_task_by_id(user_id, task_id):
     url = base_url + f"users/{user_id}/tasks/{task_id}"
 
@@ -156,7 +157,7 @@ def print_response(response):
     print(response.headers)
 
 if __name__ == '__main__':
-    create_user()
+    # create_user()
     # login()
     # get_task_by_id(31)
     # create_task()
@@ -164,4 +165,4 @@ if __name__ == '__main__':
     # delete_task(151)
     # get_users()
     # get_user_tasks(1)
-    # get_user_task_by_id(1, 3)
+    get_user_task_by_id(1, 3)
